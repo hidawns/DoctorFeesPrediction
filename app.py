@@ -16,7 +16,7 @@ st.title("Doctor Consultation Fee Prediction")
 
 # Input fields for the user to provide data
 experience = st.number_input("Years of Experience", min_value=0, max_value=66, step=1)
-profile = st.selectbox("Doctor Specialization", ["Ayurveda", "Dentist", "Dermatologist", "ENT Specialist", "General Medicine", "Homeopath"])
+profile = st.selectbox("Doctor Specialization", ["Ayurveda", "Dentist", "Dermatologists", "ENT Specialist", "General Medicine", "Homeopath"])
 place = st.selectbox("Place", ["Bangalore", "Mumbai", "Delhi", "Hyderabad", "Chennai", "Coimbatore", "Ernakulam", "Thiruvananthapuram", "Other"])
 
 # Mapping Profile and Place to match the encoding in the training phase
