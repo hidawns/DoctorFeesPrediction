@@ -20,7 +20,7 @@ profile = st.selectbox("Doctor Specialization", ["Ayurveda", "Dentist", "Dermato
 place = st.selectbox("Place", ["Bangalore", "Mumbai", "Delhi", "Hyderabad", "Chennai", "Coimbatore", "Ernakulam", "Thiruvananthapuram", "Other"])
 
 # Mapping Profile and Place to match the encoding in the training phase
-profile_mapping = {"Ayurveda": "profile_Ayurveda", "Dentist": "profile_Dentist", "Dermatologist": "profile_Dermatologist", 
+profile_mapping = {"Ayurveda": "profile_Ayurveda", "Dentist": "profile_Dentist", "Dermatologists": "profile_Dermatologists", 
                    "ENT Specialist": "profile_ENT Specialist", "General Medicine": "profile_General Medicine", "Homeopath": "profile_Homeopath"}
 
 place_mapping = {"Bangalore": "place_Bangalore", "Mumbai": "place_Mumbai", "Delhi": "place_Delhi", "Hyderabad": "place_Hyderabad", 
