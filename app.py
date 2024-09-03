@@ -18,15 +18,14 @@ st.title("Doctor Consultation Fee Prediction")
 experience = st.number_input("Years of Experience", min_value=0, max_value=66, step=1)
 profile = st.selectbox("Doctor Specialization", ["Ayurveda", "Dentist", "Dermatologist", "ENT Specialist", "General Medicine", "Homeopath"])
 place = st.selectbox("Place", ["Bangalore", "Mumbai", "Delhi", "Hyderabad", "Chennai", "Coimbatore", "Ernakulam", "Thiruvananthapuram", "Other"])
-num_of_qualifications = st.number_input("Number of Qualifications", min_value=1, max_value=10, step=1)
 
 # Mapping Profile and Place to match the encoding in the training phase
-profile_mapping = {"Ayurveda": "profile_0", "Dentist": "profile_1", "Dermatologist": "profile_2", 
-                   "ENT Specialist": "profile_3", "General Medicine": "profile_4", "Homeopath": "profile_5"}
+profile_mapping = {"Ayurveda": "profile_Ayurveda", "Dentist": "profile_Dentist", "Dermatologist": "profile_Dermatologist", 
+                   "ENT Specialist": "profile_ENT Specialist", "General Medicine": "profile_General Medicine", "Homeopath": "profile_Homeopath"}
 
-place_mapping = {"Bangalore": "place_0", "Mumbai": "place_1", "Delhi": "place_2", "Hyderabad": "place_3", 
-                 "Chennai": "place_4", "Coimbatore": "place_5", "Ernakulam": "place_6", 
-                 "Thiruvananthapuram": "place_7", "Other": "place_8"}
+place_mapping = {"Bangalore": "place_Bangalore", "Mumbai": "place_Mumbai", "Delhi": "place_Delhi", "Hyderabad": "place_Hyderabad", 
+                 "Chennai": "place_Chennai", "Coimbatore": "place_Coimbatore", "Ernakulam": "place_Ernakulam", 
+                 "Thiruvananthapuram": "place_Thiruvananthapuram"}
 
 # Prepare the input DataFrame for prediction
 input_data = pd.DataFrame(columns=scaler_X.feature_names_in_)
@@ -34,7 +33,6 @@ input_data.loc[0] = 0  # Initialize with zeros
 
 # Set the input features based on user input
 input_data["Experience"] = np.log(experience) if experience > 0 else 0
-input_data["Num_of_Qualifications"] = num_of_qualifications
 input_data[profile_mapping[profile]] = 1
 input_data[place_mapping[place]] = 1
 
@@ -48,4 +46,4 @@ prediction = finalmodel.predict(input_data_scaled)
 prediction = scaler_y.inverse_transform(prediction.reshape(-1, 1))
 
 # Display the prediction
-st.write(f"The predicted consultation fee is: ₹{prediction[0][0]:.2f}")
+st.write(f"The predicted consultation fee is: {prediction[0][0]:.2f}")
