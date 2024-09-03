@@ -36,14 +36,16 @@ input_data["Experience"] = np.log(experience) if experience > 0 else 0
 input_data[profile_mapping[profile]] = 1
 input_data[place_mapping[place]] = 1
 
-# Scale the input features
-input_data_scaled = scaler_X.transform(input_data)
+# Button to trigger prediction
+if st.button("Predict"):
+    # Scale the input features
+    input_data_scaled = scaler_X.transform(input_data)
 
-# Make the prediction
-prediction = finalmodel.predict(input_data_scaled)
+    # Make the prediction
+    prediction = finalmodel.predict(input_data_scaled)
 
-# Reverse the scaling for the prediction
-prediction = scaler_y.inverse_transform(prediction.reshape(-1, 1))
+    # Reverse the scaling for the prediction
+    prediction = scaler_y.inverse_transform(prediction.reshape(-1, 1))
 
-# Display the prediction
-st.write(f"The predicted consultation fee is: {prediction[0][0]:.2f}")
+    # Display the prediction
+    st.write(f"The predicted consultation fee is: {prediction[0][0]:.2f}")
